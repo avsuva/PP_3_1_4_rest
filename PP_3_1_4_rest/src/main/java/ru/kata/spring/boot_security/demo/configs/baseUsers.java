@@ -34,6 +34,7 @@ public class baseUsers implements ApplicationRunner {
     private void addUser(){
         User admin = new User("admin", "admin","admin@yandex.ru", List.of(roleService.getByIdRoles(1)));
         User user = new User("user","user", "user@yandex.ru",List.of(roleService.getByIdRoles(2)));
+
         userService.add(user);
         userService.add(admin);
     }

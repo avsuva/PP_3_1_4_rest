@@ -85,8 +85,4 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         userRepository.deleteById(id);
     }
 
-    public User passwordCoder(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        return user;
-    }
 }

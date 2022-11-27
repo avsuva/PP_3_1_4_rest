@@ -15,6 +15,7 @@ import ru.kata.spring.boot_security.demo.service.RoleService;
 import ru.kata.spring.boot_security.demo.service.UserService;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 
@@ -32,6 +33,11 @@ public class AdminController {
     @GetMapping("/admin")
     public List<User> getAllUsers(){
         return userService.allUsers();
+    }
+
+    @GetMapping("/admin/AdminInfo")
+    public User showAdminInfo(Principal principal) {
+        return userService.findUserByUsername(principal.getName());
     }
 
     @GetMapping("/admin/{id}")
@@ -71,7 +77,7 @@ public class AdminController {
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
-    @PostMapping("/admin/{id}")
+    @PatchMapping("/admin/{id}")
     public ResponseEntity<User> updateUser(@PathVariable("id") int id, @RequestBody User user) {
         userService.update(user.getId(), user);
         return new ResponseEntity<>(HttpStatus.OK);

@@ -31,11 +31,6 @@ public class RoleServiceImpl implements RoleService {
         return roleRepository.getById(id);
     }
 
-
-    @Override
-    public Set<Role> getSetOfRoles(String[] roleNames) {
-        return roleRepository.getSetOfRoles(roleNames);
-    }
     @Override
     @Transactional
     public void addRole(Role role) {

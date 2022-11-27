@@ -8,7 +8,7 @@ $(async function() {
 const table = $('#tbodyAllUserTable');
 
 async function thisUser() {
-    fetch("http://localhost:8080/api/user")
+    fetch("http://localhost:8080/api/admin/AdminInfo")
         .then(res => res.json())
         .then(data => {
             $('#headerEmail').append(data.email);
@@ -52,9 +52,6 @@ async function allUsers() {
             })
         })
 }
-
-
-
 
 async function newUser() {
     await fetch("http://localhost:8080/api/roles")
@@ -150,7 +147,7 @@ function editUser() {
         }
 
         fetch("http://localhost:8080/api/admin/" + editForm.id.value, {
-            method: 'POST',
+            method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
             },
